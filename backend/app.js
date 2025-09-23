@@ -20,6 +20,10 @@ const PORT = process.env.PORT || 8000;
 app.use('/user', userRoutes);
 app.use('/pdf', pdfRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to PDF Upload App!');
+});
+
 app.listen(PORT, () => {
     console.log(`The server is listening on port: ${PORT}`);
   });
