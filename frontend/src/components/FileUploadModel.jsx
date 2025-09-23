@@ -48,7 +48,7 @@ const FileUploadModal = () => {
       }
 
       const response = await axios.post(
-        `http://localhost:8000/pdf/upload/${accountId}`,
+        `https://pdfuploadapp.up.railway.app/pdf/upload/${accountId}`,
         formData,
         {
           headers: {

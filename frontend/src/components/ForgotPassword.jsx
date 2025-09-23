@@ -8,7 +8,7 @@ const ForgotPassword = () => {
     e.preventDefault(); // Prevent the default form submission
     try {
       const response = await fetch(
-        "http://localhost:8000/user/password/reset/request",
+        "https://pdfuploadapp.up.railway.app/user/password/reset/request",
         {
           method: "POST",
           headers: {

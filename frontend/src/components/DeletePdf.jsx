@@ -17,7 +17,7 @@ const DeletePdf = () => {
   const handleDeletePdf = () => {
     setLoading(true);
     axios
-      .delete(`http://localhost:8000/pdf/delete/${id}`)
+      .delete(`https://pdfuploadapp.up.railway.app/pdf/delete/${id}`)
       .then(() => {
         setLoading(false);
         // Handle success

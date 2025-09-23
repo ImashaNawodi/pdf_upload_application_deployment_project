@@ -17,7 +17,7 @@ const DeleteAccount = () => {
   const handleDeleteAccount = () => {
     setLoading(true);
     axios
-      .delete(`http://localhost:8000/user/delete/${accountId}`)
+      .delete(`https://pdfuploadapp.up.railway.app/user/delete/${accountId}`)
       .then(() => {
         setLoading(false);
         setNotification({

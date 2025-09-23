@@ -30,7 +30,7 @@ const ChangePassword = () => {
     try {
       // Make an API call to change the password
       const response = await axios.post(
-        `http://localhost:8000/user/change/${accountId}`,
+        `https://pdfuploadapp.up.railway.app/user/change/${accountId}`,
         {
           currentPassword,
           newPassword,

@@ -21,7 +21,7 @@ const UserHome = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:8000/pdf/view-all-pdf/${accountId}`)
+      .get(`https://pdfuploadapp.up.railway.app/pdf/view-all-pdf/${accountId}`)
       .then((response) => {
         setPdfs(response.data);
         setLoading(false);
@@ -61,7 +61,7 @@ const UserHome = () => {
   const handleDownload = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/pdf/download/${id}`,
+        `https://pdfuploadapp.up.railway.app/pdf/download/${id}`,
         {
           responseType: "blob",
         }

@@ -25,7 +25,7 @@ const ViewPdf = () => {
   const fetchPdfUrl = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/pdf/viewPdf/${pdfId}`,
+        `https://pdfuploadapp.up.railway.app/pdf/viewPdf/${pdfId}`,
         {
           responseType: "arraybuffer",
         }

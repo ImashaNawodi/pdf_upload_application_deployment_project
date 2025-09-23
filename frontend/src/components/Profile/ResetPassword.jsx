@@ -12,7 +12,7 @@ const ResetPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8000/user/reset-password/${resetToken}`,
+        `https://pdfuploadapp.up.railway.app/user/reset-password/${resetToken}`,
         {
           newPassword: password,
           resetToken: resetToken, // Include reset token in the request payload
