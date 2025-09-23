@@ -93,13 +93,13 @@ Before running the application, make sure you have the following installed:
 
    This will start the frontend server and open the application in your default browser at `http://localhost:3000`.
 
-## Deployment on Railway
+## Deployment on Railway (Backend Only)
 
-This project is deployed on **Railway**. You can access the live application here:
+The **backend** is deployed on **Railway**, while the frontend should be run locally or hosted separately.  
 
-👉 https://pdfuploadapp.up.railway.app/
+👉 Live Backend API: https://pdfuploadapp.up.railway.app/
 
-### Steps to Deploy on Railway
+### Steps to Deploy Backend on Railway
 
 1. **Sign up / Log in to Railway:**
    - Go to https://railway.app/ and create an account.
@@ -107,6 +107,7 @@ This project is deployed on **Railway**. You can access the live application her
 2. **Create a New Project:**
    - Click **New Project** → **Deploy from GitHub repo**.
    - Connect your GitHub repository (`pdf_upload_application`).
+   - Set the root directory to `backend`.
 
 3. **Add Environment Variables:**
    - In your Railway project settings, add the same `.env` variables used in local development:
@@ -117,16 +118,20 @@ This project is deployed on **Railway**. You can access the live application her
      - MONGODB_URI=your_mongodb_connection_string
 
 4. **Configure Services:**
-   - Railway will automatically detect Node.js for both backend and frontend.
-   - If using a separate MongoDB service, you can provision a Railway MongoDB plugin and update `MONGODB_URI`.
+   - Railway will detect Node.js and deploy the backend.
+   - If you don’t have an external MongoDB, you can provision a Railway MongoDB plugin and update `MONGODB_URI`.
 
 5. **Deploy:**
    - Click **Deploy**.
-   - Once build completes, Railway will provide a public URL (your app is available at `https://pdfuploadapp.up.railway.app/`).
+   - Once build completes, Railway will provide a public backend URL (for example: `https://pdfuploadapp.up.railway.app/`).
+
+6. **Update Frontend API URLs:**
+   - In your frontend code, replace any `http://localhost:8000` API calls with the Railway backend URL (`https://pdfuploadapp.up.railway.app/`).
 
 ## Usage
 
-- Open your web browser and go to `http://localhost:3000` (for local) or `https://pdfuploadapp.up.railway.app/` (for live) to use the PDF Upload Application.
+- Open your web browser and go to `http://localhost:3000` (frontend).  
+- The frontend will connect to the deployed backend at `https://pdfuploadapp.up.railway.app/`.
 
 - **Authentication:**
   - Register a new account or login with existing credentials.
