@@ -7,6 +7,7 @@ const FileUploadModal = () => {
   const [notification, setNotification] = useState(null);
   const navigate = useNavigate();
   const { accountId } = useParams();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const addFile = (file) => {
     const objectURL = URL.createObjectURL(file);
@@ -48,7 +49,7 @@ const FileUploadModal = () => {
       }
 
       const response = await axios.post(
-        `https://pdfuploadapp.up.railway.app/pdf/upload/${accountId}`,
+        `${API_URL}pdf/upload/${accountId}`,
         formData,
         {
           headers: {

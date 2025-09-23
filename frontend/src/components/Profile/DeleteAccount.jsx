@@ -13,11 +13,12 @@ const DeleteAccount = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { accountId } = useParams();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleDeleteAccount = () => {
     setLoading(true);
     axios
-      .delete(`https://pdfuploadapp.up.railway.app/user/delete/${accountId}`)
+      .delete(`${API_URL}user/delete/${accountId}`)
       .then(() => {
         setLoading(false);
         setNotification({

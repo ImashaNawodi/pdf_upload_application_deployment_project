@@ -12,6 +12,7 @@ const UserHome = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [showDropdown, setShowDropdown] = useState(false);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const { accountId } = useParams();
   const { user } = useAuthContext();
@@ -21,7 +22,7 @@ const UserHome = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://pdfuploadapp.up.railway.app/pdf/view-all-pdf/${accountId}`)
+      .get(`${API_URL}pdf/view-all-pdf/${accountId}`)
       .then((response) => {
         setPdfs(response.data);
         setLoading(false);
@@ -61,7 +62,7 @@ const UserHome = () => {
   const handleDownload = async (id) => {
     try {
       const response = await axios.get(
-        `https://pdfuploadapp.up.railway.app/pdf/download/${id}`,
+        `${API_URL}pdf/download/${id}`,
         {
           responseType: "blob",
         }

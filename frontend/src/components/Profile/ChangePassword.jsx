@@ -14,6 +14,7 @@ const ChangePassword = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSave = async (e) => {
     e.preventDefault(); // Prevent the default form submission
@@ -30,7 +31,7 @@ const ChangePassword = () => {
     try {
       // Make an API call to change the password
       const response = await axios.post(
-        `https://pdfuploadapp.up.railway.app/user/change/${accountId}`,
+        `${API_URL}user/change/${accountId}`,
         {
           currentPassword,
           newPassword,

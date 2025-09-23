@@ -3,20 +3,18 @@ import React, { useState } from "react";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [notification, setNotification] = useState(null); // New state for notifications
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSendMessage = async (e) => {
     e.preventDefault(); // Prevent the default form submission
     try {
-      const response = await fetch(
-        "https://pdfuploadapp.up.railway.app/user/password/reset/request",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const response = await fetch(`${API_URL}user/password/reset/request`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
       const data = await response.json();
       if (response.ok) {
         setNotification({

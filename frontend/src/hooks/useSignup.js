@@ -5,29 +5,29 @@ export const useSignup = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // Corrected typo and initialized isLoading with false
   const { dispatch } = useAuthContext(); // Corrected to call useAuthContext as a function
-  const signup = async ( fullName,email, password ) => {
+  const API_URL = process.env.REACT_APP_API_URL;
+
+  const signup = async (fullName, email, password) => {
     setIsLoading(true);
     setError(null);
+    const response = await fetch(`${API_URL}user/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fullName, email, password }),
+    });
+    const json = await response.json();
+    if (!response.ok) {
+      setIsLoading(false);
+      setError(json.error);
+    }
+    if (response.ok) {
+      // save the user in local storage
+      localStorage.setItem("user", JSON.stringify(json));
 
-      const response = await fetch('https://pdfuploadapp.up.railway.app/user/signup', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" }, 
-        body: JSON.stringify({ fullName,email, password }),
-      });
-      const json = await response.json();
-      if (!response.ok) {
-        setIsLoading(false)
-        setError(json.error);
-      } 
-      if (response.ok) {
-        // save the user in local storage
-        localStorage.setItem("user", JSON.stringify(json))
-
-        // update the auth context
-        dispatch({ type: "LOGIN", payload: json })
-         setIsLoading(false)
-      }
-    
-  }
+      // update the auth context
+      dispatch({ type: "LOGIN", payload: json });
+      setIsLoading(false);
+    }
+  };
   return { signup, isLoading, error };
 };

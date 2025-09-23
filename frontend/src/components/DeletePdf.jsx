@@ -13,11 +13,12 @@ const DeletePdf = () => {
   const navigate = useNavigate();
   const [notification, setNotification] = useState(null); 
   const { id, accountId } = useParams();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleDeletePdf = () => {
     setLoading(true);
     axios
-      .delete(`https://pdfuploadapp.up.railway.app/pdf/delete/${id}`)
+      .delete(`${API_URL}pdf/delete/${id}`)
       .then(() => {
         setLoading(false);
         // Handle success

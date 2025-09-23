@@ -7,12 +7,13 @@ const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const { resetToken } = useParams();
   const [notification, setNotification] = useState(null); // New state for notifications
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `https://pdfuploadapp.up.railway.app/user/reset-password/${resetToken}`,
+        `${API_URL}user/reset-password/${resetToken}`,
         {
           newPassword: password,
           resetToken: resetToken, // Include reset token in the request payload

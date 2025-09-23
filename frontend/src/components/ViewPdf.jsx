@@ -20,12 +20,13 @@ const ViewPdf = () => {
   const location = useLocation();
   const pdfName = location.state?.pdfName || "PDF";
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Function to fetch PDF URL based on requestId
   const fetchPdfUrl = async () => {
     try {
       const response = await axios.get(
-        `https://pdfuploadapp.up.railway.app/pdf/viewPdf/${pdfId}`,
+        `${API_URL}pdf/viewPdf/${pdfId}`,
         {
           responseType: "arraybuffer",
         }
