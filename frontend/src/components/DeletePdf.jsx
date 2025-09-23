@@ -11,7 +11,7 @@ const DeletePdf = () => {
   const cancelButtonRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [notification, setNotification] = useState(null); // New state for notifications
+  const [notification, setNotification] = useState(null); 
   const { id, accountId } = useParams();
 
   const handleDeletePdf = () => {
