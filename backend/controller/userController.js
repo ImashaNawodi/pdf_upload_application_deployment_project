@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
-
+console.log(process.env.USER);
 const createAuthToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "2d" });
 };
@@ -107,6 +107,8 @@ const sendPasswordResetEmail = async (email, resetToken) => {
         pass: process.env.PASSWORD,
       },
       tls: { rejectUnauthorized: false },
+      logger: true,
+      debug: true,
     });
 
     // Send email
