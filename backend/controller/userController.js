@@ -40,6 +40,8 @@ const sendSignupEmail = async (email, accountId) => {
         pass: process.env.PASSWORD,
       },
       tls: { rejectUnauthorized: false },
+       logger: true,
+      debug: true,
     });
 
     // Send email
